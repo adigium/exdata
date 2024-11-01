@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collection-controller-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: collection-controller-service
+  template:
+    metadata:
+      labels:
+        app: collection-controller-service
+    spec:
+      containers:
+        - name: collection-controller-service
+          image: collection-controller-service
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: '512Mi'
+              cpu: '1000m'
+            limits:
+              memory: '512Mi'
+              cpu: '1000m'
+          ports:
+            - containerPort: 4000
+            - containerPort: 9229
+              protocol: TCP
+          env:
+            - name: DATABASE_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DATABASE_URI
+
+            - name: CONTROLLER_HTTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_HTTP_PORT
+            - name: COLLECTOR_HTTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: COLLECTOR_HTTP_PORT
+            - name: COLLECTOR_TASK_UPDATE_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: COLLECTOR_TASK_UPDATE_THRESHOLD
+
+            - name: TASK_CONTROL_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: TASK_CONTROL_ENDPOINT
+            - name: TASK_LOG_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: TASK_LOG_ENDPOINT
+
+            - name: HEALTHCHECK_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEALTHCHECK_INTERVAL
+            - name: HEALTHCHECK_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEALTHCHECK_THRESHOLD
+            - name: HEARTBEAT_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEARTBEAT_THRESHOLD
+            - name: REDISTRIBUTION_FREQUENCY
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_REDISTRIBUTION_FREQUENCY
+
+            - name: HEALTHCHECK_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEALTHCHECK_ENDPOINT
+            - name: HEARTBEAT_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEARTBEAT_ENDPOINT
+            - name: REGISTER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: REGISTER_ENDPOINT
+            - name: DEREGISTER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DEREGISTER_ENDPOINT
+            - name: TLS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: TLS_ENABLED

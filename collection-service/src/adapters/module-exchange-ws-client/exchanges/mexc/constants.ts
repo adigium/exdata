@@ -1,0 +1,34 @@
+import { WebsocketSides } from '@frameworks/websocket';
+import { Websocket } from '../../types';
+
+const PUBLIC_WEBSOCKET_URL = 'wss://wbs.mexc.com/ws';
+const USER_DATA_WEBSOCKET_URL = `wss://wbs.mexc.com/ws?listenKey=${Websocket.Constants.AUTH_PLACEHOLDER}`;
+
+const MAX_STREAMS_PER_PAYLOAD = 10;
+
+const WEBSOCKET_TIMEOUT_MS = 30 * 1000; // 30 seconds
+const WEBSOCKET_LIFETIME_MS = 24 * 60 * 60 * 1000; // 1 day
+const WEBSOCKET_STREAM_LIMIT = 30;
+const WEBSOCKET_CONNECTIONS_LIMIT = undefined;
+const WEBSOCKET_PINGING_SIDE = WebsocketSides.CLIENT;
+const WEBSOCKET_PINGING_INTERVAL_MS = 1 * 60 * 1000; // 1 minute
+const IS_WEBSOCKET_PINGING_FRAMES = false;
+
+const LISTEN_KEY_PINGING_INTERVAL_MS = 30 * 60 * 1000; // 30 min
+
+const DEPTH_LIGHT_LEVEL = 5;
+
+export const constants = {
+  PUBLIC_WEBSOCKET_URL,
+  USER_DATA_WEBSOCKET_URL,
+  MAX_STREAMS_PER_PAYLOAD,
+  WEBSOCKET_LIFETIME_MS,
+  WEBSOCKET_PINGING_INTERVAL_MS,
+  WEBSOCKET_TIMEOUT_MS,
+  WEBSOCKET_STREAM_LIMIT,
+  WEBSOCKET_CONNECTIONS_LIMIT,
+  WEBSOCKET_PINGING_SIDE,
+  IS_WEBSOCKET_PINGING_FRAMES,
+  DEPTH_LIGHT_LEVEL,
+  LISTEN_KEY_PINGING_INTERVAL_MS,
+};

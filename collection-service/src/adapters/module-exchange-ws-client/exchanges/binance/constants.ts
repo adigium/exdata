@@ -1,0 +1,32 @@
+import { WebsocketSides } from '@frameworks/websocket';
+import { Websocket } from '../../types';
+
+const MAX_STREAMS_PER_PAYLOAD = 100;
+
+const PUBLIC_WEBSOCKET_URL = 'wss://stream.binance.com:9443/stream';
+const USER_DATA_WEBSOCKET_URL = `wss://stream.binance.com:9443/ws/${Websocket.Constants.AUTH_PLACEHOLDER}`;
+
+const WEBSOCKET_TIMEOUT_MS = 30 * 1000; // 30 sec
+const WEBSOCKET_LIFETIME_MS = 24 * 60 * 60 * 1000; // 24 hr
+const WEBSOCKET_STREAM_LIMIT = 1024;
+const WEBSOCKET_PINGING_SIDE = WebsocketSides.SERVER;
+const WEBSOCKET_PINGING_INTERVAL_MS = 3 * 60 * 1000; // 3 min
+const IS_WEBSOCKET_PINGING_FRAMES = true;
+
+const BALANCE_ACCOUNT_TYPE = 'SPOT';
+
+const LISTEN_KEY_PINGING_INTERVAL_MS = 30 * 60 * 1000; // 30 min
+
+export const constants = {
+  MAX_STREAMS_PER_PAYLOAD,
+  USER_DATA_WEBSOCKET_URL,
+  PUBLIC_WEBSOCKET_URL,
+  WEBSOCKET_LIFETIME_MS,
+  WEBSOCKET_PINGING_INTERVAL_MS,
+  WEBSOCKET_TIMEOUT_MS,
+  WEBSOCKET_STREAM_LIMIT,
+  WEBSOCKET_PINGING_SIDE,
+  IS_WEBSOCKET_PINGING_FRAMES,
+  BALANCE_ACCOUNT_TYPE,
+  LISTEN_KEY_PINGING_INTERVAL_MS,
+};

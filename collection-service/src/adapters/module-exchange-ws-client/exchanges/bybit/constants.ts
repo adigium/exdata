@@ -1,0 +1,28 @@
+import { WebsocketSides } from '@frameworks/websocket';
+
+const MAX_STREAMS_PER_PAYLOAD = 10;
+
+const PUBLIC_WEBSOCKET_URL = 'wss://stream.bybit.com/v5/public/spot';
+const PRIVATE_WEBSOCKET_URL = `wss://stream.bybit.com/v5/private`;
+
+const WEBSOCKET_TIMEOUT_MS = 30 * 1000; // 30 seconds
+const WEBSOCKET_LIFETIME_MS = undefined;
+const WEBSOCKET_STREAM_LIMIT = undefined;
+const WEBSOCKET_PINGING_SIDE = WebsocketSides.SERVER;
+const WEBSOCKET_PINGING_INTERVAL_MS = 3 * 60 * 1000; // 3 minutes
+const IS_WEBSOCKET_PINGING_FRAMES = false;
+
+const AUTH_MESSAGE_EXPIRATION_MS = 5000; // 5 seconds
+
+export const constants = {
+  MAX_STREAMS_PER_PAYLOAD,
+  PUBLIC_WEBSOCKET_URL,
+  PRIVATE_WEBSOCKET_URL,
+  WEBSOCKET_LIFETIME_MS,
+  WEBSOCKET_PINGING_INTERVAL_MS,
+  WEBSOCKET_TIMEOUT_MS,
+  WEBSOCKET_STREAM_LIMIT,
+  WEBSOCKET_PINGING_SIDE,
+  IS_WEBSOCKET_PINGING_FRAMES,
+  AUTH_MESSAGE_EXPIRATION_MS,
+};

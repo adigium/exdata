@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rate-limiter-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rate-limiter-service
+  template:
+    metadata:
+      labels:
+        app: rate-limiter-service
+    spec:
+      containers:
+        - name: rate-limiter-service
+          image: rate-limiter-service
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: '512Mi'
+              cpu: '1000m'
+            limits:
+              memory: '512Mi'
+              cpu: '1000m'
+          ports:
+            - containerPort: 8000
+          env:
+            - name: HTTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: RATE_LIMITER_HTTP_PORT
+
+            - name: BINANCE_UID
+              value: ''
+            - name: BYBIT_UID
+              value: ''
+            - name: GATE_UID
+              value: ''
+            - name: KUCOIN_UID
+              value: ''
+            - name: MEXC_UID
+              value: ''
+            - name: POLONIEX_UID
+              value: ''

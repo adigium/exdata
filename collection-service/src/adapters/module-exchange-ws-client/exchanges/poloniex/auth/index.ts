@@ -1,0 +1,1 @@
+export { PoloniexOneMessageStrategy } from './PoloniexOneMessageStrategy';

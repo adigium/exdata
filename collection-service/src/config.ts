@@ -1,0 +1,30 @@
+export const DI = {
+  ExchangeClientModule: 'exchange-client-module',
+  ExchangeMapperModule: 'exchange-mapper-module',
+  ExchangeProviderModule: 'exchange-provider-module',
+  ExchangeWebsocketModule: 'exchange-websocket-module',
+  HttpClientModule: 'http-client-module',
+  RateLimiterModule: 'rate-limiter-module',
+  DatabaseRepository: 'database-repository',
+  SettingsRepository: 'settings-repository',
+
+  ApplicationService: 'application-service',
+  ConfigurationService: 'configuration-service',
+  ExchangeFactoryService: 'exchange-factory-service',
+  ExchangeService: 'exchange-service',
+  OrchestrationService: 'orchestration-service',
+
+  ApiHealthService: 'api-health-service',
+  ApiHealthController: 'api-health-controller',
+  ApiControlService: 'api-control-service',
+  ApiControlController: 'api-control-controller',
+
+  CmcService: 'coinmarketcap-service',
+  CmcClient: 'coinmarketcap-client',
+  HeartbeatService: 'heartbeat-service',
+  HeartbeatClient: 'heartbeat-client',
+  RegistryService: 'registry-service',
+  RegistryClient: 'registry-client',
+  TaskLogService: 'task-log-service',
+  TaskLogClient: 'task-log-client',
+};

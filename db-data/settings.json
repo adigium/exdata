@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "development",
+    "isCollectionEnabled": true,
+    "collectionServiceTaskIntervalMs": 1000,
+    "collectionServiceHearbeatIntervalMs": 5000,
+    "collectionServiceHearbeatRetryIntervalMs": 1000,
+    "collectionServiceRegisterRetries": 5,
+    "collectionServiceRegisterRetryIntervalMs": 5000,
+    "assetsRankThreshold": 1000,
+    "orderBookLastSyncThreshold": 30000,
+    "orderBookLatencySavingBound": 10,
+    "orderBookSyncThrottleIntervalMs": 1000,
+    "orderBookOutOfSyncThrottleIntervalMs": 5000,
+    "balancesLatencySavingBound": 10,
+    "balancesSyncDebounceDelayMs": 500,
+    "websocketsPingingFrequencyMultiplier": 3
+  }
+]

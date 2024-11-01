@@ -1,0 +1,206 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: collection-service
+spec:
+  serviceName: 'collection-service'
+  replicas: 1
+  selector:
+    matchLabels:
+      app: collection-service
+  template:
+    metadata:
+      labels:
+        app: collection-service
+    spec:
+      containers:
+        - name: collection-service
+          image: collection-service
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+            - containerPort: 9229
+              protocol: TCP
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+
+            - name: DATABASE_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DATABASE_URI
+
+            - name: INSTANCE_HOST
+              value: $(POD_NAME).collection-service.$(POD_NAMESPACE).svc.cluster.local
+            - name: INSTANCE_HTTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: COLLECTOR_HTTP_PORT
+
+            - name: CONTROLLER_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_HOST
+            - name: CONTROLLER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_HTTP_PORT
+
+            - name: TASK_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: COLLECTOR_TASK_INTERVAL
+
+            - name: TASK_CONTROL_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: TASK_CONTROL_ENDPOINT
+            - name: TASK_LOG_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: TASK_LOG_ENDPOINT
+
+            - name: RATE_LIMITER_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: RATE_LIMITER_HOST
+            - name: RATE_LIMITER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: RATE_LIMITER_HTTP_PORT
+
+            - name: HEARTBEAT_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_HOST
+            - name: HEARTBEAT_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_HTTP_PORT
+            - name: HEARTBEAT_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEARTBEAT_INTERVAL
+            - name: HEARTBEAT_RETRY_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEARTBEAT_RETRY_INTERVAL
+
+            - name: REGISTRY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_HOST
+            - name: REGISTRY_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONTROLLER_HTTP_PORT
+            - name: REGISTRY_RETRIES
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: REGISTRY_RETRIES
+            - name: REGISTRY_RETRY_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: REGISTRY_RETRY_INTERVAL
+
+            - name: HEALTHCHECK_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEALTHCHECK_ENDPOINT
+            - name: HEARTBEAT_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEARTBEAT_ENDPOINT
+            - name: REGISTER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: REGISTER_ENDPOINT
+            - name: DEREGISTER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DEREGISTER_ENDPOINT
+            - name: TLS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: TLS_ENABLED
+
+            - name: ASSETS_RANK_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: ASSETS_RANK_THRESHOLD
+
+            - name: COINMARKETCAP_API_KEY
+              value: ''
+
+            - name: BINANCE_UID
+              value: ''
+            - name: BINANCE_API_KEY
+              value: ''
+            - name: BINANCE_API_SECRET
+              value: ''
+
+            - name: BYBIT_UID
+              value: ''
+            - name: BYBIT_API_KEY
+              value: ''
+            - name: BYBIT_API_SECRET
+              value: ''
+
+            - name: GATE_UID
+              value: ''
+            - name: GATE_API_KEY
+              value: ''
+            - name: GATE_API_SECRET
+              value: ''
+
+            - name: KUCOIN_UID
+              value: ''
+            - name: KUCOIN_API_KEY
+              value: ''
+            - name: KUCOIN_API_SECRET
+              value: ''
+            - name: KUCOIN_PASSWORD
+              value: ''
+
+            - name: MEXC_UID
+              value: ''
+            - name: MEXC_API_KEY
+              value: ''
+            - name: MEXC_API_SECRET
+              value: ''
+
+            - name: POLONIEX_UID
+              value: ''
+            - name: POLONIEX_API_KEY
+              value: ''
+            - name: POLONIEX_API_SECRET
+              value: ''

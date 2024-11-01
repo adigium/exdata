@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "fetch-markets",
+    "complexity": 1,
+    "maxInstances": 1,
+    "minInstances": 1,
+    "task": "fetch-markets",
+    "active": true
+  },
+  {
+    "_id": "fetch-deposit-withdraw-fees",
+    "complexity": 1,
+    "maxInstances": 1,
+    "minInstances": 1,
+    "task": "fetch-deposit-withdraw-fees",
+    "active": true
+  },
+  {
+    "_id": "fetch-currencies",
+    "complexity": 1,
+    "maxInstances": 1,
+    "minInstances": 1,
+    "task": "fetch-currencies",
+    "active": true
+  },
+  {
+    "_id": "fetch-order-books",
+    "complexity": 1,
+    "maxInstances": 1,
+    "minInstances": 1,
+    "task": "fetch-order-books",
+    "active": false
+  },
+  {
+    "_id": "fetch-balances",
+    "complexity": 1,
+    "maxInstances": 1,
+    "minInstances": 1,
+    "task": "fetch-balances",
+    "active": false
+  }
+]

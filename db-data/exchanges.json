@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "binance",
+    "name": "Binance",
+    "active": true
+  },
+  {
+    "_id": "bybit",
+    "name": "ByBit",
+    "active": true
+  },
+  {
+    "_id": "gate",
+    "name": "Gate",
+    "active": true
+  },
+  {
+    "_id": "kucoin",
+    "name": "Kucoin",
+    "active": true
+  },
+  {
+    "_id": "mexc",
+    "name": "MEXC",
+    "active": true
+  },
+  {
+    "_id": "poloniex",
+    "name": "Poloniex",
+    "active": true
+  }
+]
